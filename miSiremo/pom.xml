@@ -253,11 +253,11 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>${version.wildfly.maven.plugin}</version>
             </plugin>
-          <!--   <plugin>
+             <plugin>
 			   <groupId>com.google.appengine</groupId>
 			   <artifactId>appengine-maven-plugin</artifactId>
 			   <version>1.9.61</version>
-			</plugin>-->
+	    </plugin>
         </plugins>
     </build>
 
