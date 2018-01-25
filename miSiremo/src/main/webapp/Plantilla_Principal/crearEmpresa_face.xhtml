@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+       template="principalAdmin.xhtml">
+	
+		<ui:define name="contenido">
+		
+<f:metadata>
+<f:viewParam name="id" value="#{administradorControlador.id}"></f:viewParam>
+</f:metadata>
+		
+ <div class="col-md-10 grid_4">
+ <div class="movie movie-test movie-test-dark movie-test-left">
+  <h:form>		
+		<h:messages globalOnly="true"/>
+	<h:outputScript rendered="#{administradorControlador.passDiferentes}">
+		    alert("Las contraseñas no coinsiden");
+	</h:outputScript>	
+	
+      <div class="form-group has-feedback">
+      	Nombres Administrador:
+        <h:inputText value="#{administradorControlador.administrador.nombres}" id="nombres" type="text" class="form-control" placeholder="Nombres"/>
+		<h:message for="nombres"/>
+      </div>
+      <div class="form-group has-feedback">
+        Apellidos Administrador:
+        <h:inputText value="#{administradorControlador.administrador.apellidos}" id="apellidos" type="text" class="form-control" placeholder="Apellidos" />
+		<h:message for="apellidos"/>
+      </div>
+      <div class="form-group has-feedback">
+        Nombre de Usuario Administrador:
+        <h:inputText value="#{administradorControlador.administrador.nombreusuario}" id="nombreusuario" type="text" class="form-control" placeholder="Nombre de Usuario"/>
+		<h:message for="nombreusuario"/>
+      </div>
+      <div class="form-group has-feedback">
+        Telefono Administrador:
+        <h:inputText value="#{administradorControlador.administrador.telefono}" id="telefono" type="text" class="form-control" placeholder="Telefono"/>
+		<h:message for="telefono"/>
+      </div>
+
+   	<div class="form-group has-feedback">
+   		Fecha de Nacimiento Administrador:
+   		<h:inputText value="#{administradorControlador.administrador.fechanacimiento}" id="fechaNacimiento" class="datepicker form-control" type="text" name="date" data-date-format="dd/mm/yyyy" placeholder="Fecha de Nacimiento"> 
+			<f:convertDateTime pattern="MM/dd/yyyy"/>
+		</h:inputText>
+	</div>
+      <div class="form-group has-feedback">
+        Email Administrador:
+		<h:inputText value="#{administradorControlador.administrador.email}" id="email" type="email" class="form-control" placeholder="Email"/>
+		<h:message for="email"/>
+      </div>
+      <div class="form-group has-feedback">
+        Genero Administrador:
+		<h:selectOneMenu value="#{administradorControlador.administrador.genero}" class="form-control" id="genero">
+			<f:selectItems value="#{administradorControlador.generos}"/> 
+		</h:selectOneMenu>
+		<h:message for="genero"/>
+      </div>
+      
+      <div class="form-group has-feedback">
+      	Contraseña:
+        <h:inputText value="#{administradorControlador.administrador.contrasenia}" id="pass" type="password" class="form-control" placeholder="Contraseña"/>
+		<h:message for="pass"/>
+      </div>
+      <div class="form-group has-feedback">
+        Repetir Contraseña:
+        <h:inputSecret value="#{administradorControlador.rcontrasenia}" id="rpass" type="password" class="form-control" placeholder="Contraseña"/>
+		<h:message for="rpass"/>
+
+      </div>
+      <div class="column">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+        	<h:commandButton action="#{administradorControlador.Guardar2(sesionControlador.id)}" value="Guardar" type="submit" class="btn btn-primary btn-block btn-flat"/>
+        </div>
+        <!-- /.col -->
+      </div>
+    </h:form>
+</div>
+</div>
+					
+		</ui:define>
+</ui:composition>

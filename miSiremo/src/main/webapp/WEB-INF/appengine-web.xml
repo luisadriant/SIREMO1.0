@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appenengine-web-app xmlns=" https://appengine.google.com/ns/1.0">
+	<version>1</version>
+	<threadsafe>true</threadsafe>
+	<runtime>java8</runtime>
+</appenengine-web-app>

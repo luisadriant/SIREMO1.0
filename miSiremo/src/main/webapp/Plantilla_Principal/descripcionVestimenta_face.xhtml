@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<f:metadata>
+<f:viewParam name="idUsuario" value="#{votoDescControlador.idUsuario}" />
+<f:viewParam name="idVesti" value="#{votoDescControlador.idVestimenta}" />
+</f:metadata>
+
+	<ui:composition template="descripcionVestimenta.xhtml">
+
+<ui:define name="logosiremo">
+			<h:form>	
+			   <ul class="col-sm-3 logo">
+				 <li><p><a href="principal_face.xhtml?idUsuario=#{votoDescControlador.idUsuario}">SIREMO</a></p></li>
+				 <li class="last"><i class="edit"> </i></li>
+				 <div class="clearfix"> </div>
+			   </ul>
+			</h:form>
+</ui:define>
+
+
+<ui:define name="imgvestimenta">
+
+                      	<div class="movie_image">
+                                <span class="movie_rating">#{votoDescControlador.rating}</span>
+                                <img  src="#{votoDescControlador.vestimenta.imagen}" class="img-responsive" alt=""/>
+                            </div>
+
+</ui:define>
+
+
+<ui:define name="votacionvestimenta">
+
+                            	<h:form>
+                            	
+                            	<p:growl id="messages" showDetail="true" />
+							     	<h:panelGrid columns="1" cellpadding="5">
+							        
+								        <p:rating value="#{votoDescControlador.voto}" cancel="false">
+								            <p:ajax event="rate" listener="#{votoDescControlador.onrate}" update="messages" />
+								        </p:rating>
+								        
+							        </h:panelGrid>
+						  	   </h:form>
+						  	   
+</ui:define>    
+
+
+<ui:define name="descripcionvestimenta">
+
+					<h:form id="form1">
+<h:outputText value="No existen registros" rendered="#{empty votoDescControlador.idVestimenta}"/>
+
+                        	<p class="movie_option"><strong>Nombre: </strong><a href="#">#{votoDescControlador.vestimenta.descripcion}</a></p>
+                        	<p class="movie_option"><strong>Marca: </strong><a href="#">#{votoDescControlador.vestimenta.marca.nombre}</a></p>
+                        	<p class="movie_option"><strong>Talla: </strong><a href="#">#{votoDescControlador.vestimenta.talla}</a></p>
+                                <p class="movie_option"><strong>Estilo: </strong><a href="#">#{votoDescControlador.vestimenta.estilo}</a></p>
+                                <p class="movie_option"><strong>Color: </strong><a href="#">#{votoDescControlador.vestimenta.color}</a></p>
+                        	<p class="movie_option"><strong>Local: </strong><a href="#">#{votoDescControlador.vestimenta.empresa.nombre}</a></p>
+                        	<p class="movie_option"><strong>Telefono: </strong><a href="#">#{votoDescControlador.vestimenta.empresa.contacto}</a></p>
+                        	<p class="movie_option"><strong>Direccion: </strong> <a href="#">#{votoDescControlador.vestimenta.empresa.direccion}</a></p> 
+                            
+
+					</h:form>	
+</ui:define>   
+
+    
+   
+   
+    
+    
+  <!-- <ui:define name="opciones">
+
+<h:form>
+  <ul>
+<li> <span class="simptip-position-bottom simptip-movable" data-tooltip="Mi Estilo"><a href="estilo_face.xhtml?idUsuario=#{principalController.idUsuario}"> <img  src="images/miEstilo.png" class="img-responsive"/> </a></span></li>
+
+<li><span id="ha" class="simptip-position-bottom simptip-movable" data-tooltip="Recomendaciones"> <a href="recomendacion_face.xhtml?idUsuario=#{principalController.idUsuario}">  <img  src="images/recomendacion.png" class="img-responsive"/></a> </span></li>
+
+<li><span class="simptip-position-bottom simptip-movable" data-tooltip="Me Gustaron"><a href="meGusta_face.xhtml?idUsuario=#{principalController.idUsuario}"> <img  src="images/meGusta.png" class="img-responsive"/> </a></span></li>
+  </ul>
+  </h:form>  
+    </ui:define> -->
+    
+	
+	</ui:composition>
+
+  
+  
+  
+</html>

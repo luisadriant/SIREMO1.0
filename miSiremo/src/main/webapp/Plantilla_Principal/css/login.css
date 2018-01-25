@@ -1,0 +1,123 @@
+
+section.login {
+  position: relative;
+  padding: 40px ;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.login-box,
+.register-box {
+  width: 360px;
+  margin: 10% auto;
+}
+@media (max-width: 768px) {
+  .login-box,
+  .register-box {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+.login-box-body,
+.register-box-body {
+  background: #fff;
+  padding: 15px;
+  border-top: 0;
+  color: #000;
+}
+
+.login-box-msg,
+.register-box-msg {
+  font-weight:bold;
+  margin: 0;
+  text-align: center;
+font-size: 25px;
+  padding: 0 20px 20px 20px;
+}
+
+.btn-primary {
+  background-color: #DE0611;
+  border-color: #DE0611;
+    color: white;
+font-weight:bold;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.hover {
+    color: white;
+    border-color: #fdcc52;
+    background-color: red;
+}
+
+.main-header #navbar-search-input.form-control {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: transparent;
+}
+.form-control {
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #d2d6de;
+}
+.form-control:focus {
+  border-color: #3c8dbc;
+  box-shadow: none;
+}
+.form-control::-moz-placeholder,
+.form-control:-ms-input-placeholder,
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+.form-control:not(select) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.btn-facebook {
+  color: #ffffff;
+  background-color: rgba(51, 60, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-facebook:hover {
+  color: #ffffff;
+  background-color: #2d4373;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-social {
+  position: relative;
+  padding-left: 44px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.btn-social > :first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  line-height: 34px;
+  font-size: 1.6em;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

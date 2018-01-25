@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+      			xmlns:f="http://java.sun.com/jsf/core" 
+      			xmlns:h="http://java.sun.com/jsf/html">
+
+  <h:head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Registro</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/new-age.css" rel="stylesheet"/>
+    <!-- Theme style login-->
+
+    <link href="css/registro.css" rel="stylesheet" />
+    
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="Datepicker/datepicker.css" rel="stylesheet" />
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="Datepicker/bootstrap-datepicker.js"></script>
+	<script>
+			$(function(){
+				$('.datepicker').datepicker()
+			});	
+    </script>
+
+  </h:head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="login.xhtml">SIREMO</a>
+
+
+      </div>
+    </nav>
+
+
+
+   <section class="registro" id="registro">
+<div class="register-box">
+  <div class="register-box-body">
+    <p class="login-box-msg">Nuevo Regístro</p>
+
+   <!-- <form action="login.xhtml" method="post">-->
+    <h:form>		
+		<h:messages globalOnly="true"/>
+		<h:outputScript rendered="#{usuarioControlador.guadado}">
+		    alert("Registrado con exito");
+		</h:outputScript>
+		<h:outputScript rendered="#{usuarioControlador.passDiferentes}">
+		    alert("Las contraseñas no coinsiden");
+		</h:outputScript>
+		<h:outputScript rendered="#{usuarioControlador.usrrepetido}">
+		    alert("El nombre de usuario ya existe");
+		</h:outputScript>
+      <div class="form-group has-feedback">
+      	Nombres:
+        <h:inputText value="#{usuarioControlador.usuario.nombres}" id="nombres" type="text" class="form-control" placeholder="Nombres"/>
+		<h:message for="nombres"/>
+      </div>
+      <div class="form-group has-feedback">
+        Apellidos:
+        <h:inputText value="#{usuarioControlador.usuario.apellidos}" id="apellidos" type="text" class="form-control" placeholder="Apellidos" />
+		<h:message for="apellidos"/>
+      </div>
+      <div class="form-group has-feedback">
+        Nombre de Usuario:
+        <h:inputText value="#{usuarioControlador.usuario.nombreusuario}" id="nombreusuario" type="text" class="form-control" placeholder="Nombre de Usuario"/>
+		<h:message for="nombreusuario"/>
+      </div>
+      <div class="form-group has-feedback">
+        Telefono:
+        <h:inputText value="#{usuarioControlador.usuario.telefono}" id="telefono" type="text" class="form-control" placeholder="Telefono"/>
+		<h:message for="telefono"/>
+      </div>
+
+   	<div class="form-group has-feedback">
+   		Fecha de Nacimiento:
+   		<h:inputText value="#{usuarioControlador.usuario.fechanacimiento}" id="fechaNacimiento" class="datepicker form-control" type="text" name="date" data-date-format="dd/mm/yyyy" placeholder="Fecha de Nacimiento"> 
+			<f:convertDateTime pattern="MM/dd/yyyy"/>
+		</h:inputText>
+	</div>
+      <div class="form-group has-feedback">
+        Email:
+		<h:inputText value="#{usuarioControlador.usuario.email}" id="email" type="email" class="form-control" placeholder="Email"/>
+		<h:message for="email"/>
+      </div>
+      <div class="form-group has-feedback">
+        Genero:
+		<h:selectOneMenu value="#{usuarioControlador.usuario.genero}" class="form-control" id="genero">
+			<f:selectItems value="#{usuarioControlador.generos}"/> 
+		</h:selectOneMenu>
+		<h:message for="genero"/>
+      </div>
+      
+      <div class="form-group has-feedback">
+      	Contraseña:
+         <h:inputSecret value="#{usuarioControlador.usuario.contrasenia}" id="pass" type="password" class="form-control" placeholder="Contraseña"/>
+		<h:message for="pass"/>
+		
+      </div>
+      <div class="form-group has-feedback">
+      Repetir Contraseña:
+         <h:inputSecret value="#{usuarioControlador.rcontrasenia}" id="rpass" type="password" class="form-control" placeholder="Contraseña"/>
+		<h:message for="rpass"/>
+
+      </div>
+      
+      <div class="column">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Acepto los <a style="color:blue;" href="#">terminos</a> y condiciones. </input>
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+        	<h:commandButton action="#{usuarioControlador.Guardar()}" value="Registrar" type="submit" class="btn btn-primary btn-block btn-flat"/>
+        </div>
+        <!-- /.col -->
+      </div>
+    </h:form>
+
+    <div class="social-auth-links text-center">
+      <p>- O -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i>Iniciar sesión con Facebook</a>
+    
+    <a href="login.xhtml" style="color:#DE0611;">Ya tengo una cuenta</a>
+  </div>
+</div>
+  <!-- /.form-box -->
+</div>
+    </section>
+
+  </body>
+
+</html>

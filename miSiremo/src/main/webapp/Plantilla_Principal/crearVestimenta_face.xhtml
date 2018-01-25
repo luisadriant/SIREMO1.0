@@ -1,0 +1,137 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+       template="empresaAdmin.xhtml">
+	
+		<ui:define name="contenido">
+		
+<f:metadata>
+<f:viewParam name="id" value="#{empresaControlador.id}"></f:viewParam>
+</f:metadata>
+		
+ <div class="col-md-10 grid_4">
+ <div class="movie movie-test movie-test-dark movie-test-left">
+  <h:form>		
+		<h:messages globalOnly="true"/>
+      <div class="form-group has-feedback">
+      	Nombre Empresa:
+        <h:inputText value="#{empresaControlador.empresa.nombre}" id="nombre" type="text" class="form-control" placeholder="Nombre"/>
+		<h:message for="nombre"/>
+      </div>
+      <div class="form-group has-feedback">
+        Descripcion:
+        <h:inputText value="#{empresaControlador.empresa.descripcion}" id="descripccion" type="text" class="form-control" placeholder="Descripcion" />
+		<h:message for="descripccion"/>
+      </div>
+      <div class="form-group has-feedback">
+        Ruc:
+        <h:inputText value="#{empresaControlador.empresa.ruc}" id="ruc" type="text" class="form-control" placeholder="Ruc"/>
+		<h:message for="ruc"/>
+      </div>
+      <div class="form-group has-feedback">
+        Direccion:
+        <h:inputText value="#{empresaControlador.empresa.direccion}" id="direc" type="text" class="form-control" placeholder="Direccion"/>
+		<h:message for="direc"/>
+      </div>
+	
+	<h:panelGrid>
+		<h:dataTable id="ves" value="#{empresaControlador.empresa.vestimentas}" var="vestimentas">
+		<h:column>
+		  <div>
+			<p class="login-box-msg">Tu Vestimenta</p>
+		  </div>
+	      <div class="form-group has-feedback">
+	      	Descripcion:
+	        <h:inputText value="#{vestimentas.descripcion}" id="Descripcion" type="text" class="form-control"/>
+			<h:message for="Descripcion"/>
+	      </div>
+	        
+	       <div class="form-group has-feedback">
+      		  Color:
+				<h:selectOneMenu value="#{vestimentas.color}" class="form-control" id="color">
+				<f:selectItems value="#{empresaControlador.colores}"/> 
+				</h:selectOneMenu>
+				<h:message for="color"/>
+     	 </div>
+	      
+	     <div class="form-group has-feedback">
+      		  Estilo:
+				<h:selectOneMenu value="#{vestimentas.estilo}" class="form-control" id="estilo">
+				<f:selectItems value="#{empresaControlador.estilos}"/> 
+				</h:selectOneMenu>
+				<h:message for="estilo"/>
+     	 </div>
+	     <div class="form-group has-feedback">
+      		  Genero:
+				<h:selectOneMenu value="#{vestimentas.genero}" class="form-control" id="genero">
+				<f:selectItems value="#{empresaControlador.generos}"/> 
+				</h:selectOneMenu>
+				<h:message for="genero"/>
+     	 </div>
+	      <div class="form-group has-feedback">
+      		  Tipo:
+				<h:selectOneMenu value="#{vestimentas.tipo}" class="form-control" id="tipo">
+				<f:selectItems value="#{empresaControlador.tipos}"/> 
+				</h:selectOneMenu>
+				<h:message for="tipo"/>
+     	 </div>
+	      <div class="form-group has-feedback">
+	        Precio:
+	        <h:inputText value="#{vestimentas.precio}" id="Precio" type="text" class="form-control" />
+			<h:message for="Precio"/>
+	      </div>
+	      <div class="form-group has-feedback">
+      		  Talla:
+				<h:selectOneMenu value="#{vestimentas.talla}" class="form-control" id="talla">
+				<f:selectItems value="#{empresaControlador.tallas}"/> 
+				</h:selectOneMenu>
+				<h:message for="talla"/>
+     	 </div>
+	      <div class="form-group has-feedback">
+	        Imagen:
+	         <h:inputText value="#{vestimentas.imagen}" id="Imagen" type="text" class="form-control" /> 
+	      
+	        <!--<h:inputFile value="#{vestimentas.imagen}" id="Imagen"  type="text"  class="form-control"/>-->
+			<h:message for="Imagen"/>
+	      </div>
+	      <div class="form-group has-feedback">
+	        Marca:
+	        <h:selectOneMenu value="#{vestimentas.id_marca}" class="form-control" id="Marca">
+				<f:selectItems value="#{empresaControlador.camposMarcas}"/> 
+			</h:selectOneMenu>
+			<h:message for="Marca"/>
+	      </div>
+	   </h:column>
+		
+		</h:dataTable>
+	</h:panelGrid>
+	
+	
+	
+	
+        <h:commandButton action="#{empresaControlador.addVestimenta()}" value="+ Vestimentas" class="btn btn-primary btn-block btn-flat">
+		<f:ajax render="ves" execute="@all"></f:ajax>
+		</h:commandButton>
+      
+      <div class="column">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Acepto los <a style="color:blue;" href="#">terminos</a> y condiciones. </input>
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+        	<h:commandButton action="#{empresaControlador.Guardar()}" value="Guardar" type="submit" class="btn btn-primary btn-block btn-flat"/>
+        </div>
+        <!-- /.col -->
+      </div>
+    </h:form>
+</div>
+</div>
+					
+		</ui:define>
+</ui:composition>

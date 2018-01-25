@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+      			xmlns:f="http://java.sun.com/jsf/core" 
+      			xmlns:h="http://java.sun.com/jsf/html">
+
+  <h:head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>SIREMO</title>
+
+  <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css"/>
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="device-mockups/device-mockups.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/new-age.css" rel="stylesheet"/>
+    <!-- Theme style login-->
+
+    <link href="css/login.css" rel="stylesheet" />
+
+
+  </h:head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">SIREMO</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#login">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#conocer">Conócenos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+<section class="masthead">
+      <div class="masthead-content">
+        <div class="container">
+        <div class="row h-100">
+          <div class="col-lg-7 my-auto">
+            <div class="masthead-content mx-auto">
+          <h1>Vistete bien, vistete a la moda, vistete como eres!</h1>
+              <a href="registro.xhtml" class="btn btn-outline btn-xl js-scroll-trigger">Registrarse</a>
+	      <a href="registroEmpresa.xhtml" class="btn btn-outline btn-xl js-scroll-trigger">Registrar una Empresa</a>
+        </div>
+      </div>
+          <div class="col-lg-5 my-auto">
+            <div class="device-container">
+              <div class="device-mockup iphone6_plus portrait white">
+                <div class="device">
+                  <div class="screen">
+                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                    <img src="images/demo-screen-1.jpg" class="img-fluid" alt=""/>
+                  </div>
+                  <div class="button">
+                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>          
+	</div>          
+      </div>
+    </div>
+      <div class="overlay"></div>
+    </section>
+
+
+<section class="conocenos" id="conocer">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h2>Bienvenido</h2>
+          <p class="text-muted">Conoce nuestro Servicio</p>
+          
+        </div>
+        <div class="row">
+          <div class="col-lg-4 my-auto">
+            <div class="device-container">
+              <div class="device-mockup iphone6_plus portrait white">
+                <div class="device">
+                  <div class="screen">
+                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                    <img src="images/demo-screen-1.jpg" class="img-fluid" alt=""/>
+                  </div>
+                  <div class="button">
+                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 my-auto">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-screen-smartphone text-primary"></i>
+                    <h3>Que es Siremo</h3>
+                    <p class="text-muted">Es un sistema de recomendacion de moda y estilo que permite a los usuarios idenficar y ver las recomendaciones de diferentes prendas de vestir que se encuentran en el mercado, permitiendo elegir en gustos, tamaño, precios, etc. Cuenta con un algoritmo de recomendacion, el cual se basa en analizar y procesar información histórica de los usuarios (edad, género, calificaciones..), de las vestimentas (marcas, modelos, precios..) y realiza la predicción de los productos que pueden ser interesantes para el usuario.</p>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-camera text-primary"></i>
+                    <h3>Como funciona Siremo</h3>
+                    <p class="text-muted">Siremo es un sistema de recomendación que utiliza un sistema experto basado en reglas para definir el estilo de cada uno de los usuarios, ademas este sistema provee al usuario recomendaciones de prendas de vestir, basandose en predicciones exactas ya que utiliza los algoritmos "Fuzzy C Means" y "K-Vecinos". </p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-present text-primary"></i>
+                    <h3>Como utilizarlo</h3>
+                    <p class="text-muted">Para poder utilizar SIREMO solo es necesario <a href="registro.xhtml" style="color:#DE0611;">registrarte</a> con tus datos personales y llenar el test que aparece en el primer inicio de sesion y podras obervar toda la vestimenta disponible y de este modo podras disfrutar de los beneficios que brinda este sistema para tu forma de vestir. </p>
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="login" id="login">
+
+	<div class="login-box">
+	  <!-- /.login-logo -->
+	  <div class="login-box-body">
+	    <p class="login-box-msg">Inicia Sesión</p>
+<!--********************************REGISTRO DE UN USUARIO ADMINISTRADOR O USUARIO NORMAL ************************-->
+	    <h:form>
+	    <h:messages globalOnly="true"/>
+		<h:outputScript rendered="#{loginControlador.datosIncorrectos}">
+		    alert("El usuario o contraseña son incorrectos");
+		</h:outputScript>
+	 	 
+			 <div class="form-group has-feedback">
+		        Nombre de Usuario:
+		        <h:inputText value="#{loginControlador.nombreusuario}" id="nombreusuario" type="text" class="form-control" placeholder="Nombre de Usuario"/>
+				<h:message for="nombreusuario"/>
+		     </div>
+	 		 <div class="form-group has-feedback">
+      			Contraseña:
+        		<h:inputSecret value="#{loginControlador.password}" id="pass" type="password" class="form-control" placeholder="Contraseña"/>
+				<h:message for="pass"/>		
+      		 </div>
+	 	 
+	      <div class="column">
+		<div class="col-xs-8">
+		  <div class="checkbox icheck">
+		    <label>
+		      <input type="checkbox"> Recuérdame </input>
+		    </label>
+		  </div>
+		</div>
+		<!-- /.col -->
+		<div class="col-xs-4">
+		
+		<h:commandLink class="btn btn-primary btn-block btn-flat" value="Iniciar Sesión" action="#{loginControlador.Iniciar()}" />
+		
+		</div>
+		<!-- /.col -->
+	      </div>
+	    </h:form>
+<!-- *********************************************************************************************************************** -->
+		
+	    <div class="social-auth-links text-center">
+		
+	      <p>- O -</p>
+	      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"> <i class="fa fa-facebook"></i>Iniciar sesión con Facebook</a>
+
+		<br>
+	    <a href="#" style="color:#DE0611;" >Olvide mi contraseña</a></br>
+	    <a href="registro.xhtml" style="color:#DE0611;">Registrar un nuevo usuario</a>
+	   
+	   </div>
+	   
+	  </div>
+	</div>
+    </section>
+
+
+
+
+    
+
+
+    <section class="contact bg-primary" id="contact">
+      <div class="container">
+        <h2>Comunicate por nuestras redes sociales!</h2>
+        <ul class="list-inline list-social">
+          <li class="list-inline-item social-twitter">
+            <a href="#">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li class="list-inline-item social-facebook">
+            <a href="#">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item social-google-plus">
+            <a href="#">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p> 2018 Siremo. Todos los Derechos Reservados.</p>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="#">Privacidad</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terminos</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/new-age.js"></script>
+
+  </body>
+
+</html>

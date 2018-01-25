@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+      			xmlns:f="http://java.sun.com/jsf/core" 
+      			xmlns:h="http://java.sun.com/jsf/html">
+
+  <h:head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Registro</title>
+
+  <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/new-age.css" rel="stylesheet"/>
+    <!-- Theme style login-->
+
+    <link href="css/registro.css" rel="stylesheet" />
+	<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="Datepicker/datepicker.css" rel="stylesheet" />
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="Datepicker/bootstrap-datepicker.js"></script>
+	<script>
+			$(function(){
+				$('.datepicker').datepicker()
+			});	
+    </script>
+
+
+  </h:head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="login.xhtml">SIREMO</a>
+      </div>
+    </nav>
+
+<section class="registro" id="registro">
+<div class="register-box">
+  <div class="register-box-body">
+    <p class="login-box-msg">Nuevo Regístro Administrador</p>
+
+		  <h:form>		
+		<h:messages globalOnly="true"/>
+		<h:outputScript rendered="#{administradorControlador.guardado}">
+		    alert("Registrado con exito");
+		</h:outputScript>
+		<h:outputScript rendered="#{administradorControlador.passDiferentes}">
+		    alert("Las contraseñas no coinsiden");
+		</h:outputScript>
+		<h:outputScript rendered="#{administradorControlador.admrepetido}">
+		    alert("El nombre de usuario para este administrador ya existe");
+		</h:outputScript>
+      <div class="form-group has-feedback">
+      	Nombres Administrador:
+        <h:inputText value="#{administradorControlador.administrador.nombres}" id="nombres" type="text" class="form-control" placeholder="Nombres"/>
+		<h:message for="nombres"/>
+      </div>
+      <div class="form-group has-feedback">
+        Apellidos Administrador:
+        <h:inputText value="#{administradorControlador.administrador.apellidos}" id="apellidos" type="text" class="form-control" placeholder="Apellidos" />
+		<h:message for="apellidos"/>
+      </div>
+      <div class="form-group has-feedback">
+        Nombre de Usuario Administrador:
+        <h:inputText value="#{administradorControlador.administrador.nombreusuario}" id="nombreusuario" type="text" class="form-control" placeholder="Nombre de Usuario"/>
+		<h:message for="nombreusuario"/>
+      </div>
+      <div class="form-group has-feedback">
+        Telefono Administrador:
+        <h:inputText value="#{administradorControlador.administrador.telefono}" id="telefono" type="text" class="form-control" placeholder="Telefono"/>
+		<h:message for="telefono"/>
+      </div>
+
+   	<div class="form-group has-feedback">
+   		Fecha de Nacimiento Administrador:
+   		<h:inputText value="#{administradorControlador.administrador.fechanacimiento}" id="fechaNacimiento" class="datepicker form-control" type="text" name="date" data-date-format="dd/mm/yyyy" placeholder="Fecha de Nacimiento"> 
+			<f:convertDateTime pattern="MM/dd/yyyy"/>
+		</h:inputText>
+	</div>
+      <div class="form-group has-feedback">
+        Email Administrador:
+		<h:inputText value="#{administradorControlador.administrador.email}" id="email" type="email" class="form-control" placeholder="Email"/>
+		<h:message for="email"/>
+      </div>
+      <div class="form-group has-feedback">
+        Genero Administrador:
+		<h:selectOneMenu value="#{administradorControlador.administrador.genero}" class="form-control" id="genero">
+			<f:selectItems value="#{administradorControlador.generos}"/> 
+		</h:selectOneMenu>
+		<h:message for="genero"/>
+      </div>
+      
+      <div class="form-group has-feedback">
+      	Contraseña:
+        <h:inputSecret value="#{administradorControlador.administrador.contrasenia}" id="pass" type="password" class="form-control" placeholder="Contraseña"/>
+		<h:message for="pass"/>
+		
+      </div>
+      <div class="form-group has-feedback">
+      Repetir Contraseña:
+        <h:inputSecret value="#{administradorControlador.rcontrasenia}" id="rpass" type="password" class="form-control" placeholder="Contraseña"/>
+		<h:message for="rpass"/>
+
+      </div>
+      
+    <h:panelGrid>
+	<h:dataTable id="tel" value="#{administradorControlador.administrador.empresas}" var="empresas">
+		<h:column>
+		  <div>
+			<p class="login-box-msg">Tu Empresa</p>
+		  </div>
+	      <div class="form-group has-feedback">
+	      	Nombre empresa:
+	        <h:inputText value="#{empresas.nombre}" id="nombreemp" type="text" class="form-control"/>
+			<h:message for="nombreemp"/>
+	      </div>
+	      <div class="form-group has-feedback">
+	        Descripcion Empresa:
+	        <h:inputText value="#{empresas.descripcion}" id="descripcion" type="text" class="form-control"/>
+			<h:message for="descripcion"/>
+	      </div>
+	      <div class="form-group has-feedback">
+	        Ruc Empresa:
+	        <h:inputText value="#{empresas.ruc}" id="ruc" type="text" class="form-control" />
+			<h:message for="ruc"/>
+	      </div>
+	      <div class="form-group has-feedback">
+	        Direccion:
+	        <h:inputText value="#{empresas.direccion}" id="direccion" type="text" class="form-control" />
+			<h:message for="direccion"/>
+	      </div>
+	      <div class="form-group has-feedback">
+	        Contacto:
+	        <h:inputText value="#{empresas.contacto}" id="contacto" type="text" class="form-control" />
+			<h:message for="contacto"/>
+	      </div>
+	   </h:column>
+    </h:dataTable>
+	</h:panelGrid> 
+        <h:commandButton action="#{administradorControlador.addEmpresa()}" value="+ Empresas" class="btn btn-primary btn-block btn-flat">
+		<f:ajax render="tel" execute="@all"></f:ajax>
+		</h:commandButton>
+      
+      <div class="column">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Acepto los <a style="color:blue;" href="#">terminos</a> y condiciones. </input>
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+        	<h:commandButton action="#{administradorControlador.Guardar()}" value="Registrar" type="submit" class="btn btn-primary btn-block btn-flat"/>
+        </div>
+        <!-- /.col -->
+      </div>
+    </h:form>
+
+    <div class="social-auth-links text-center">
+      <p>- O -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i>Iniciar sesión con Facebook</a>
+    
+    <a href="login.xhtml" style="color:#DE0611;">Ya tengo una cuenta</a>
+  </div>
+</div>
+  <!-- /.form-box -->
+</div>
+
+    </section>
+
+  </body>
+
+</html>

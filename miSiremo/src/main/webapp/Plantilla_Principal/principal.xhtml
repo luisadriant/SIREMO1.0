@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+<title>Siremo - Principal</title>
+
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- start plugins -->
+
+<script src="js/responsiveslides.min.js"></script>
+<script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+</script>
+</h:head>
+<body>
+<div class="container">
+	<div class="container_wrap">
+		<div class="header_top">
+								<ui:insert name="logosiremo">
+								
+								aqui va boton del logo de SIREMO
+
+
+								</ui:insert>
+								
+
+
+		    <div class="col-sm-6 nav">
+		    <!-- 
+										<ui:insert name="opciones">
+								
+								aqui van las opciones
+
+
+								</ui:insert> -->
+								
+			</div>
+			<div class="col-sm-3 header_right">
+			   <ul class="header_right_box">
+		<!--		 <li><img src="images/p1.png" alt=""/></li>-->
+				 <li><p><a href="login.xhtml">Salir</a></p></li>
+				 <li class="last"><i class="edit"> </i></li>
+				 <div class="clearfix"> </div>
+			   </ul>
+			</div>
+			<div class="clearfix"> </div>
+	      </div>
+	      <div class="slider">
+	   <div class="callbacks_container">
+	      <ul class="rslides" id="slider">
+	        <li><img src="images/bannerI1.jpg" width="20px" height="20px" class="img-responsive" alt=""/>
+	        	<div class="button">
+			      <a href="descripcionVestimenta.xhtml" class="hvr-shutter-out-horizontal">Ver ahora</a>
+			    </div>
+			</li>
+	        <li><img src="images/bannerI2.jpg" class="img-responsive" alt=""/>
+	        	<div class="button">
+			      <a href="descripcionVestimenta.xhtml" class="hvr-shutter-out-horizontal">Ver ahora</a>
+			    </div>
+			</li>
+			<li><img src="images/bannerI3.jpg" class="img-responsive" alt=""/>
+	        	<div class="button">
+			      <a href="descripcionVestimenta.xhtml" class="hvr-shutter-out-horizontal">Ver ahora</a>
+			    </div>
+			</li>
+			<li><img src="images/bannerI4.jpg" class="img-responsive" alt=""/>
+	        	<div class="button">
+			      <a href="descripcionVestimenta.xhtml" class="hvr-shutter-out-horizontal">Ver ahora</a>
+			    </div>
+			</li>
+	      </ul>
+	    </div>
+	    <div class="banner_desc">
+			    	<div class="col-md-9">
+			    		<ul class="list_1">
+			    			<li>Publicado <span class="m_1">Feb 20, 2015</span></li>
+			    			<li>Rating <span class="m_1"><img src="images/star5.png" alt=""/></span></li>
+			    			<li><i class="icon1"> </i><p>2,548</p></li>
+			    		</ul>
+			    	</div>
+
+	    </div>
+      </div>
+      
+ 	      <div class="content">
+     	<div class="box_1">
+      	 <h1 class="m_2">Recomendaciones para ti</h1>
+
+      	 <div class="search">
+		    <form>
+				<input type="text" value="Search..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"/>
+				<input type="submit" value=""/>
+		    </form>
+		</div>
+		<div class="clearfix"> </div>
+		</div>
+
+      	       <div class="movie_top">
+
+
+
+<!--____________________________________fila 1 al lado izquierdo la imagen, la descripcion al lado derecho _____________________________-->
+	 <div class="col-md-12 grid_4">
+
+								
+								<ui:insert name="carrusel_recomendacion">
+								
+								aqui va el carrusel 1 de recomendacion FCM
+
+
+								</ui:insert>
+								
+								
+
+
+			<br></br>
+ 								<ui:insert name="carrusel_estilo">
+								
+								aqui va el carrusel 2 de recomendacion por estilo
+
+
+								</ui:insert>
+
+
+		<BR/>
+ 								<ui:insert name="carrusel_me_gustaron">
+								
+								aqui va el carrusel 3 de recomendacion FCM
+
+
+								</ui:insert>
+</div>
+
+
+
+</div>
+<!--____________________________________imagenes que sugieren algo, las imagenes de la derecha_____________________________-->
+                   
+
+    
+                      <div class="clearfix"> </div>
+                  </div>
+
+	  </div>
+</div>
+ 
+<div class="container"> 
+ <footer id="footer">
+ 	<div id="footer-3d">
+		<div class="gp-container">
+			<span class="first-widget-bend"></span>
+		</div>		
+	</div>
+    <div id="footer-widgets" class="gp-footer-larger-first-col">
+		<div class="gp-container">
+            <div class="footer-widget footer-1">
+            	<div class="wpb_wrapper">
+					<h3><p>Siremo</p></h3>
+				</div> 
+	          <br>
+	          <p>Las mejores prendas de vestir a tu elección.</p>
+			  <p class="text">Mira la que mas te guste.</p>
+			 </br>
+			 </div>
+			 <div class="footer_box">
+			  <div class="col_1_of_3 span_1_of_3">
+					<h3>Categories</h3>
+					<ul class="first">
+						<li><a href="#">Dance</a></li>
+						<li><a href="#">History</a></li>
+						<li><a href="#">Specials</a></li>
+					</ul>
+		     </div>
+		     <div class="col_1_of_3 span_1_of_3">
+					<h3>Information</h3>
+					<ul class="first">
+						<li><a href="#">New products</a></li>
+						<li><a href="#">top sellers</a></li>
+						<li><a href="#">Specials</a></li>
+					</ul>
+		     </div>
+		     <div class="col_1_of_3 span_1_of_3">
+					<h3>Siguenos</h3>
+					<ul class="first">
+						<li><a href="#">Facebook</a></li>
+						<li><a href="#">Twitter</a></li>
+						<li><a href="#">Youtube</a></li>
+					</ul>
+					<div class="copy">
+				      <p> 2018 Siremo. Todos los Derechos Reservados.</p>
+			        </div>
+		     </div>
+		    <div class="clearfix"> </div>
+	        </div>
+	        <div class="clearfix"> </div>
+		</div>
+	</div>
+  </footer>
+</div>		
+</body>
+</html>

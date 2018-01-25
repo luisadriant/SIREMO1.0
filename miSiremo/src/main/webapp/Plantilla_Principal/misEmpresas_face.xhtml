@@ -1,0 +1,161 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+       template="principalAdmin.xhtml">
+       
+       <ui:define name="titulo">
+       ADMINISTRA TUS EMPRESAS #{sesionControlador.administrador.nombres}   
+       </ui:define>
+	
+		<ui:define name="contenido">
+		<f:metadata>
+			<f:viewParam name="id" value="#{sesionControlador.id}"></f:viewParam>
+		</f:metadata>
+		
+		<h:form id="formm">
+		<p:commandLink update=":formm:empNew" oncomplete="PF('newDialog1').show()" title="Nueva Empresa">
+		   <h:outputText value="Nueva Empresa" class="btn btn-primary btn-block btn-flat" style="width:150px" /> 
+		</p:commandLink>    
+		<p:dialog header="Nueva Empresa" widgetVar="newDialog1" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        <p:outputPanel id="empNew" style="text-align:center;">
+		            <p:panelGrid  columns="2" rendered="#{not empty sesionControlador.newempresa}" columnClasses="value,value">
+		                <f:facet name="header">
+		                    <img alt="" src="images/empresa.png" width="100" height="100"/>
+		                </f:facet>
+		                <h:outputText value="Nombre:" />
+		                <h:inputText value="#{sesionControlador.newempresa.nombre}" />
+		 
+		                <h:outputText value="Ruc:" />
+		                <h:inputText value="#{sesionControlador.newempresa.ruc}" />
+		 
+		                <h:outputText value="Descripcion:" />
+		                <h:inputText value="#{sesionControlador.newempresa.descripcion}"/>
+		 
+		                <h:outputText value="Direccion" />
+		                <h:inputText value="#{sesionControlador.newempresa.direccion}" />
+		                
+		             	<h:outputText value="Contacto" />
+		                <h:inputText value="#{sesionControlador.newempresa.contacto}" />
+		                
+		            </p:panelGrid>
+		            <h:commandButton action="#{sesionControlador.NuevaEmpresa()}" value="Guardar" class="btn btn-primary btn-block btn-flat" style="width:100%"/>
+		            <h:commandButton action="#{sesionControlador.Cancelar(sesionControlador.administrador.id)}" value="Cancelar" class="btn btn-primary btn-block btn-flat" style="width:100%" immediate="true"/>
+		        </p:outputPanel>
+		    </p:dialog>
+		</h:form>
+		
+		<h:form id="form">
+		<h:messages globalOnly="true"/>
+		<h:outputText value="No hay registros" rendered="#{empty sesionControlador.administrador.empresas}" />
+		    <p:dataGrid var="empresa" value="#{sesionControlador.administrador.empresas}" columns="3" layout="grid"
+		    	rendered="#{not empty sesionControlador.administrador.empresas}"
+		        rows="6" paginator="true" id="empr"
+		        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		        rowsPerPageTemplate="3,6,9"
+		        widgetVar="empTable">
+		 		
+		        <f:facet name="header">
+		            Mis Empresas
+		        </f:facet>
+		 
+		        <p:panel header="#{empresa.nombre}" style="text-align:center">
+		            <h:panelGrid columns="2" style="width:100%">
+		 				<h:panelGrid columns="1" style="width:100%">
+		 					<img alt="" src="images/empresa.png" width="100" height="100"/>
+		 					<h:outputText value="#{empresa.ruc}" />
+		 					<p:commandLink update=":form:empDetail" oncomplete="PF('verDialog').show()" title="Ver Detalle">
+		                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+		                    <f:setPropertyActionListener value="#{empresa}" target="#{sesionControlador.selectempresa}" />
+		                	</p:commandLink> 	
+		                </h:panelGrid>
+		 				<h:panelGrid columns="1" style="width:100%">
+		 					<!--<h:button value="Editar" outcome="crearEmpresa_face.xhtml?id=#{sesionControlador.id}" class="btn btn-primary btn-block btn-flat" style="width:70%"/>-->
+							<p:commandLink update=":form:empEdit" oncomplete="PF('editDialog').show()" title="Editar">
+		                    <h:outputText value="Editar" class="btn btn-primary btn-block btn-flat" style="width:70%" /> 
+		                    <f:setPropertyActionListener value="#{empresa}" target="#{sesionControlador.selectempresa}" />
+		                	</p:commandLink>
+		                	<p:commandLink update=":form:empDel" oncomplete="PF('delDialog').show()" title="Eliminar">
+		                    <h:outputText value="Eliminar" class="btn btn-primary btn-block btn-flat" style="width:70%" /> 
+		                    <f:setPropertyActionListener value="#{empresa}" target="#{sesionControlador.selectempresa}" />
+		                	</p:commandLink>
+							<h:button value="Administrar" outcome="misVestimentas_face.xhtml?id=#{empresa.id}" class="btn btn-primary btn-block btn-flat" style="width:70%"/>
+		                </h:panelGrid>
+		            </h:panelGrid>
+		        </p:panel>
+		 
+		    </p:dataGrid>
+		 
+		    <p:dialog header="Informacion de la Empresa" widgetVar="verDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        <p:outputPanel id="empDetail" style="text-align:center;">
+		            <p:panelGrid  columns="2" rendered="#{not empty sesionControlador.selectempresa}" columnClasses="value,value">
+		                <f:facet name="header">
+		                    <img alt="" src="images/empresa.png" width="100" height="100"/>
+		                </f:facet>
+		                <h:outputText value="Nombre:" />
+		                <h:outputText value="#{sesionControlador.selectempresa.nombre}" />
+		 
+		                <h:outputText value="Ruc:" />
+		                <h:outputText value="#{sesionControlador.selectempresa.ruc}" />
+		 
+		                <h:outputText value="Descripcion:" />
+		                <h:outputText value="#{sesionControlador.selectempresa.descripcion}" />
+		 
+		                <h:outputText value="Direccion" />
+		                <h:outputText value="#{sesionControlador.selectempresa.direccion}" />
+		                
+		                <h:outputText value="Contacto" />
+		                <h:outputText value="#{sesionControlador.selectempresa.contacto}" />
+		                
+		            </p:panelGrid>
+		        </p:outputPanel>
+		    </p:dialog>
+		    
+		    
+		    <p:dialog header="Editar informacion de la Empresa" widgetVar="editDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        <p:outputPanel id="empEdit" style="text-align:center;">
+		            <p:panelGrid  columns="2" rendered="#{not empty sesionControlador.selectempresa}" columnClasses="value,value">
+		                <f:facet name="header">
+		                    <img alt="" src="images/empresa.png" width="100" height="100"/>
+		                </f:facet>
+		                <h:outputText value="Nombre:" />
+		                <h:inputText value="#{sesionControlador.selectempresa.nombre}" />
+		 
+		                <h:outputText value="Ruc:" />
+		                <h:inputText value="#{sesionControlador.selectempresa.ruc}" />
+		 
+		                <h:outputText value="Descripcion:" />
+		                <h:inputText value="#{sesionControlador.selectempresa.descripcion}"/>
+		 
+		                <h:outputText value="Direccion" />
+		                <h:inputText value="#{sesionControlador.selectempresa.direccion}" />
+		                
+		             	<h:outputText value="Contacto" />
+		                <h:inputText value="#{sesionControlador.selectempresa.contacto}" />
+		                
+		            </p:panelGrid>
+		            <h:commandButton action="#{sesionControlador.EditarEmpresa(sesionControlador.selectempresa.id)}" value="Guardar" class="btn btn-primary btn-block btn-flat" style="width:100%"/>
+		            <h:commandButton action="#{sesionControlador.Cancelar(sesionControlador.administrador.id)}" value="Cancelar" class="btn btn-primary btn-block btn-flat" style="width:100%" immediate="true"/>
+		        </p:outputPanel>
+		    </p:dialog>
+		    
+		    
+		     <p:dialog header="Eliminar la Empresa" widgetVar="delDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        <p:outputPanel id="empDel" style="text-align:center;">
+		            <p:panelGrid  columns="1" rendered="#{not empty sesionControlador.selectempresa}" columnClasses="value,value">
+		                <f:facet name="header">
+		                    <img alt="" src="images/empresa.png" width="100" height="100"/>
+		                </f:facet>
+		                <h:outputText value="Seguro desea eliminar la empresa:" />
+		                <h:outputText value="#{sesionControlador.selectempresa.nombre}" />
+		            </p:panelGrid>
+		            <h:commandButton action="#{empresaControlador.Eliminar(sesionControlador.selectempresa.id, sesionControlador.administrador.id)}" value="Aceptar" class="btn btn-primary btn-block btn-flat" style="width:100%"/>
+		            <h:commandButton action="#{sesionControlador.Cancelar(sesionControlador.administrador.id)}" value="Cancelar" class="btn btn-primary btn-block btn-flat" style="width:100%" immediate="true"/>
+		        </p:outputPanel>
+		    </p:dialog>	    
+		    
+		</h:form>
+			
+		</ui:define>
+</ui:composition>

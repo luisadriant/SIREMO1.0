@@ -1,0 +1,273 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+       template="empresaAdmin.xhtml">
+	
+		<ui:define name="contenido">
+		
+		<f:metadata>
+			<f:viewParam name="id" value="#{empresaControlador.id}"></f:viewParam>
+		</f:metadata>	
+		
+		
+		<h:form id="formm1">
+		<h:messages globalOnly="true"/>
+		<p:commandLink update=":formm1:marcaNew" oncomplete="PF('marcaDialog').show()" title="Nueva Marca">
+		   <h:outputText value="Nueva Marca" class="btn btn-primary btn-block btn-flat" style="width:150px" /> 
+		</p:commandLink>
+    
+		<p:dialog header="Nueva Marca" widgetVar="marcaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        <p:outputPanel id="marcaNew" style="text-align:center;">
+		            <p:panelGrid  columns="2" rendered="#{not empty marcaControlador.marca}" columnClasses="value,value">
+		                	
+		                	<f:facet name="header">
+			                     <img alt="" src="images/percha.png" class="img-responsive" width="100" height="100"/>
+			                </f:facet>
+			 				
+			 				<h:outputText value="Nombre:" />
+			                <h:inputText value="#{marcaControlador.marca.nombre}" id="Imagen" type="text" class="form-control"/>
+			                		                
+		            </p:panelGrid>
+		            <h:commandButton action="#{marcaControlador.Guardar()}" value="Guardar" class="btn btn-primary btn-block btn-flat" style="width:100%"/>
+		            <h:commandButton action="#{empresaControlador.Cancelar(empresaControlador.empresa.id)}" value="Cancelar" class="btn btn-primary btn-block btn-flat" style="width:100%" immediate="true"/>
+		        </p:outputPanel>
+		    </p:dialog>
+		</h:form>
+		
+		
+		<h:form id="formm">
+		<h:messages globalOnly="true"/>
+		<p:commandLink update=":formm:vesNew" oncomplete="PF('newDialog').show()" title="Nueva Vestimenta">
+		   <h:outputText value="Nueva Vestimenta" class="btn btn-primary btn-block btn-flat" style="width:150px" /> 
+		</p:commandLink>
+    
+		<p:dialog header="Nueva Vestimenta" widgetVar="newDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        <p:outputPanel id="vesNew" style="text-align:center;">
+		            <p:panelGrid  columns="2" rendered="#{not empty empresaControlador.newVestimenta}" columnClasses="value,value">
+		                	<f:facet name="header">
+			                     <img alt="" src="images/ropa.png" class="img-responsive" width="200" height="200"/>
+			                </f:facet>
+			 				
+			 				<h:outputText value="Imagen:" />
+			                <h:inputText value="#{empresaControlador.newVestimenta.imagen}" id="Imagen" type="text" class="form-control"/>
+			                
+			                <h:outputText value="Descripcion:" />
+			                <h:inputText value="#{empresaControlador.newVestimenta.descripcion}" id="descrip" type="text" class="form-control"/>
+			 
+			                <h:outputText value="Color:" />
+			                <h:selectOneMenu value="#{empresaControlador.newVestimenta.color}" class="form-control" id="color">
+							<f:selectItems value="#{empresaControlador.colores}"/> 
+							</h:selectOneMenu>
+			 
+			                <h:outputText value="Estilo:" />
+			                <h:selectOneMenu value="#{empresaControlador.newVestimenta.estilo}" class="form-control" id="estilo">
+							<f:selectItems value="#{empresaControlador.estilos}"/> 
+							</h:selectOneMenu>
+			 
+			                <h:outputText value="Genero:" />
+			                <h:selectOneMenu value="#{empresaControlador.newVestimenta.genero}" class="form-control" id="genero">
+							<f:selectItems value="#{empresaControlador.generos}"/> 
+							</h:selectOneMenu>
+			                
+			                <h:outputText value="Tipo:" />
+			                <h:selectOneMenu value="#{empresaControlador.newVestimenta.tipo}" class="form-control" id="tipo">
+							<f:selectItems value="#{empresaControlador.tipos}"/> 
+							</h:selectOneMenu>
+			 
+			                <h:outputText value="Precio:" />
+			                <h:inputText value="#{empresaControlador.newVestimenta.precio}" id="Precio" type="text" class="form-control" />
+			 
+			                <h:outputText value="Talla:" />
+			                <h:selectOneMenu value="#{empresaControlador.newVestimenta.talla}" class="form-control" id="talla">
+							<f:selectItems value="#{empresaControlador.tallas}"/> 
+							</h:selectOneMenu>
+			 
+			                <h:outputText value="Marca:" />
+			                <h:selectOneMenu value="#{empresaControlador.newVestimenta.id_marca}" class="form-control" id="Marca">
+							<f:selectItems value="#{empresaControlador.camposMarcas}"/> 
+							
+							</h:selectOneMenu>
+		                
+		            </p:panelGrid>
+		            <h:commandButton action="#{empresaControlador.NuevaVestimenta()}" value="Guardar" class="btn btn-primary btn-block btn-flat" style="width:100%"/>
+		            <h:commandButton action="#{empresaControlador.Cancelar(empresaControlador.empresa.id)}" value="Cancelar" class="btn btn-primary btn-block btn-flat" style="width:100%" immediate="true"/>
+		        </p:outputPanel>
+		    </p:dialog>
+		</h:form>
+		
+		
+		
+			<h:form id="form">
+			    <p:dataTable id="tableStateDT" var="vestimenta" value="#{empresaControlador.empresa.vestimentas}" widgetVar="vesTable" multiViewState="true"
+			                 rows="10" paginator="true"
+			                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			                 rowsPerPageTemplate="5,10,15"
+			                 selectionMode="single" selection="#{empresaControlador.selectVestimenta}" rowKey="#{vestimenta.id}"
+			                 emptyMessage="No cars found with given criteria" filteredValue="#{empresaControlador.filtVestimenta}">
+			 
+			        <f:facet name="header">
+			            <p:outputPanel>
+			                <h:outputText value="Buscar en todo:" />
+			                <p:inputText id="globalFilter" onkeyup="PF('vesTable').filter()" style="width:300px" placeholder="Buscar"/>
+			            </p:outputPanel>
+			        </f:facet>
+			 
+			       
+			        
+			        <p:column headerText="Imagen" style="width:5%;">
+			           <img alt="" src="#{vestimenta.imagen}" class="img-responsive" width="50" height="50"/>
+			        </p:column>
+			 
+			        <p:column headerText="Descripcion" filterBy="#{vestimenta.descripcion}" sortBy="#{vestimenta.descripcion}" filterMatchMode="contains" >
+			            <h:outputText value="#{vestimenta.descripcion}" />
+			        </p:column>
+			 
+			        <p:column headerText="Estilo" filterBy="#{vestimenta.estilo}" sortBy="#{vestimenta.estilo}" filterMatchMode="startsWith">
+			            <h:outputText value="#{vestimenta.estilo}" />
+			        </p:column>
+			        
+			        <p:column headerText="Color" filterBy="#{vestimenta.color}" sortBy="#{vestimenta.color}" filterMatchMode="startsWith">
+			            <h:outputText value="#{vestimenta.color}" />
+			        </p:column>
+			        
+			        <p:column headerText="Tipo" filterBy="#{vestimenta.tipo}" sortBy="#{vestimenta.tipo}" filterMatchMode="startsWith">
+			            <h:outputText value="#{vestimenta.tipo}" />
+			        </p:column>
+			        
+			        <p:column headerText="Genero" filterBy="#{vestimenta.genero}" sortBy="#{vestimenta.genero}" filterMatchMode="startsWith">
+			            <h:outputText value="#{vestimenta.genero}" />
+			        </p:column>
+			        
+			        <p:column headerText="Precio" filterBy="#{vestimenta.precio}" sortBy="#{vestimenta.precio}" filterMatchMode="startsWith">
+			            <h:outputText value="#{vestimenta.precio}" />
+			        </p:column>
+			        
+			        <p:column headerText="Talla" filterBy="#{vestimenta.talla}" sortBy="#{vestimenta.talla}" filterMatchMode="startsWith">
+			            <h:outputText value="#{vestimenta.talla}" />
+			        </p:column>
+			        
+			        <p:column headerText="Marca" filterBy="#{vestimenta.marca.nombre}" sortBy="#{vestimenta.marca.nombre}" filterMatchMode="startsWith">
+			            <h:outputText value="#{vestimenta.marca.nombre}" />
+			        </p:column>
+			 
+			        
+			        <p:column headerText="Editar" style="width:8%;">
+			           <p:commandLink update=":form:vesEdit" oncomplete="PF('editDialog').show()" title="Editar">
+					   <h:outputText value="Editar" class="btn btn-primary btn-block btn-flat" style="width:100%" /> 
+					   <f:setPropertyActionListener value="#{vestimenta}" target="#{empresaControlador.selectVestimenta}" />
+					   </p:commandLink>										
+			        </p:column>
+			        <p:column headerText="Eliminar" style="width:8%;">
+			           <p:commandLink update=":form:vesDel" oncomplete="PF('delDialog').show()" title="Eliminar">
+					   <h:outputText value="Eliminar" class="btn btn-primary btn-block btn-flat" style="width:100%" /> 
+					   <f:setPropertyActionListener value="#{vestimenta}" target="#{empresaControlador.selectVestimenta}" />
+					   </p:commandLink>
+			        </p:column>
+			    </p:dataTable>
+			 
+			    <p:dialog header="Ver Vestimenta" widgetVar="vesDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+			        <p:outputPanel id="vesDetail" style="text-align:center;">
+			            <p:panelGrid  columns="2" rendered="#{not empty empresaControlador.selectVestimenta}" columnClasses="value,value">
+			                <f:facet name="header">
+			                     <img alt="" src="#{empresaControlador.selectVestimenta.imagen}" class="img-responsive" width="200" height="200"/>
+			                </f:facet>
+			 
+			                <h:outputText value="Descripcion:" />
+			                <h:outputText value="#{empresaControlador.selectVestimenta.descripcion}" />
+			 
+			                <h:outputText value="Color:" />
+			                <h:outputText value="#{empresaControlador.selectVestimenta.color}" />
+			 
+			                <h:outputText value="Estilo:" />
+			                <h:outputText value="#{empresaControlador.selectVestimenta.estilo}" />
+			 
+			                <h:outputText value="Genero:" />
+			                <h:outputText value="#{empresaControlador.selectVestimenta.genero}"/>
+			                
+			                <h:outputText value="Tipo:" />
+			                <h:outputText value="#{empresaControlador.selectVestimenta.tipo}" />
+			 
+			                <h:outputText value="Precio:" />
+			                <h:outputText value="#{empresaControlador.selectVestimenta.precio}" />
+			 
+			                <h:outputText value="Talla:" />
+			                <h:outputText value="#{empresaControlador.selectVestimenta.talla}" />
+			 
+			                <h:outputText value="Marca:" />
+			                <h:outputText value="#{empresaControlador.selectVestimenta.marca.nombre}"/>
+			            </p:panelGrid>
+			        </p:outputPanel>
+			    </p:dialog>
+			    
+			    
+			    <p:dialog header="Editar Vestimenta" widgetVar="editDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+			        <p:outputPanel id="vesEdit" style="text-align:center;">
+			            <p:panelGrid  columns="2" rendered="#{not empty empresaControlador.selectVestimenta}" columnClasses="value,value">
+			                <f:facet name="header">
+			                     <img alt="" src="#{empresaControlador.selectVestimenta.imagen}" class="img-responsive" width="200" height="200"/>
+			                </f:facet>
+			 
+			                <h:outputText value="Descripcion:" />
+			                <h:inputText value="#{empresaControlador.selectVestimenta.descripcion}" id="Descripcion" type="text" class="form-control"/>
+			 
+			                <h:outputText value="Color:" />
+			                <h:selectOneMenu value="#{empresaControlador.selectVestimenta.color}" class="form-control" id="color">
+							<f:selectItems value="#{empresaControlador.colores}"/> 
+							</h:selectOneMenu>
+			 
+			                <h:outputText value="Estilo:" />
+			                <h:selectOneMenu value="#{empresaControlador.selectVestimenta.estilo}" class="form-control" id="estilo">
+							<f:selectItems value="#{empresaControlador.estilos}"/> 
+							</h:selectOneMenu>
+			 
+			                <h:outputText value="Genero:" />
+			                <h:selectOneMenu value="#{empresaControlador.selectVestimenta.genero}" class="form-control" id="genero">
+							<f:selectItems value="#{empresaControlador.generos}"/> 
+							</h:selectOneMenu>
+			                
+			                <h:outputText value="Tipo:" />
+			                <h:selectOneMenu value="#{empresaControlador.selectVestimenta.tipo}" class="form-control" id="tipo">
+							<f:selectItems value="#{empresaControlador.tipos}"/> 
+							</h:selectOneMenu>
+			 
+			                <h:outputText value="Precio:" />
+			                <h:inputText value="#{empresaControlador.selectVestimenta.precio}" id="Precio" type="text" class="form-control" />
+			 
+			                <h:outputText value="Talla:" />
+			                <h:selectOneMenu value="#{empresaControlador.selectVestimenta.talla}" class="form-control" id="talla">
+							<f:selectItems value="#{empresaControlador.tallas}"/> 
+							</h:selectOneMenu>
+			 
+			                <h:outputText value="Marca:" />
+			                <h:selectOneMenu value="#{empresaControlador.selectVestimenta.id_marca}" class="form-control" id="Marca">
+							<f:selectItems value="#{empresaControlador.camposMarcas}"/> 
+							</h:selectOneMenu>
+							
+			            </p:panelGrid>
+			             <h:commandButton action="#{empresaControlador.EditarVestimenta(empresaControlador.selectVestimenta.id)}" value="Guardar" class="btn btn-primary btn-block btn-flat" style="width:100%"/>
+			             <h:commandButton action="#{empresaControlador.Cancelar(empresaControlador.empresa.id)}" value="Cancelar" class="btn btn-primary btn-block btn-flat" style="width:100%"/>	
+			        </p:outputPanel>
+			    </p:dialog>
+			    
+			     <p:dialog header="Eliminar la Vestimenta" widgetVar="delDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+					        <p:outputPanel id="vesDel" style="text-align:center;">
+					            <p:panelGrid  columns="1" rendered="#{not empty empresaControlador.selectVestimenta}" columnClasses="value,value">
+					                <f:facet name="header">
+					                    <img alt="" src="#{empresaControlador.selectVestimenta.imagen}" class="img-responsive" width="100" height="100"/>
+					                </f:facet>
+					                <h:outputText value="Seguro desea eliminar la Vestimenta:" />
+					                <h:outputText value="#{empresaControlador.selectVestimenta.descripcion}" />
+					            </p:panelGrid>
+					            <h:commandButton action="#{vestimentaControlador.Eliminar(empresaControlador.selectVestimenta.id, empresaControlador.empresa.id)}" value="Eliminar" class="btn btn-primary btn-block btn-flat" style="width:100%" immediate="true"/>
+					            <h:commandButton action="#{empresaControlador.Cancelar(empresaControlador.empresa.id)}" value="Cancelar" class="btn btn-primary btn-block btn-flat" style="width:100%" immediate="true"/>
+					        </p:outputPanel>
+				</p:dialog>	 
+			    
+			</h:form>
+		
+		
+
+		</ui:define>
+</ui:composition>
